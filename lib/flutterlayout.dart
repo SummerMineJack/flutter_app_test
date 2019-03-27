@@ -9,7 +9,6 @@ class FlutterLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-
     //新建一个文本内容版本布局
     Widget titleSection = Container(
       padding: const EdgeInsets.all(32.0),

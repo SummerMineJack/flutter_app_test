@@ -1,7 +1,9 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
-//void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -26,19 +28,18 @@ class IsVariableWidget extends StatefulWidget {
 class IsVariableWidgetWords extends State<IsVariableWidget> {
   final englishWordLists = <WordPair>[];
   final englishWordTextSize =
-      const TextStyle(fontSize: 18, color: Colors.redAccent);
+  const TextStyle(fontSize: 18, color: Colors.redAccent);
   final englishWordFavorite = Set<WordPair>();
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('创建一个ListView'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('创建一个ListView'),
         centerTitle: true,
         actions: <Widget>[
-          new IconButton(
-              icon: new Icon(Icons.list), onPressed: openFavoriteEnglisdPage)
+          IconButton(icon: Icon(Icons.list), onPressed: openFavoriteEnglisdPage)
         ],
       ),
       body: buildListView(),
@@ -46,36 +47,36 @@ class IsVariableWidgetWords extends State<IsVariableWidget> {
   }
 
   void openFavoriteEnglisdPage() {
-    Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       final title = englishWordFavorite.map((pair) {
-        return new ListTile(
-          title: new Text(
+        return ListTile(
+          title: Text(
             pair.asPascalCase,
             style: englishWordTextSize,
           ),
         );
       });
       final divied =
-          ListTile.divideTiles(tiles: title, context: context).toList();
-      return new Scaffold(
-        appBar: new AppBar(
-          title: new Text(
+      ListTile.divideTiles(tiles: title, context: context).toList();
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(
             "我是新打开的页面并显示了收藏的英文单词",
             style: const TextStyle(fontSize: 16),
           ),
         ),
-        body: new ListView(children: divied),
+        body: ListView(children: divied),
       );
     }));
   }
 
   //创建listview
   Widget buildListView() {
-    return new ListView.builder(
+    return ListView.builder(
         padding: const EdgeInsets.all(15.0),
         itemBuilder: (context, i) {
           if (i.isOdd) {
-            return new Divider();
+            return Divider();
           }
           final index = i ~/ 2;
           if (index >= englishWordLists.length) {
@@ -89,13 +90,13 @@ class IsVariableWidgetWords extends State<IsVariableWidget> {
   Widget buildListViewItem(WordPair pair) {
     //进行判断点击的英文单词是否已经在englishWordFavorite中了
     final isFavoriteWord = englishWordFavorite.contains(pair);
-    return new ListTile(
-      title: new Text(
+    return ListTile(
+      title: Text(
         pair.asPascalCase,
         style: englishWordTextSize,
       ),
       //为当前的item进行添加收藏图标
-      trailing: new Icon(
+      trailing: Icon(
         isFavoriteWord ? Icons.favorite : Icons.favorite_border,
         color: isFavoriteWord ? Colors.red : null,
       ),
