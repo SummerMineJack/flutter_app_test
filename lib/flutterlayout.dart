@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   runApp(FlutterLayout());
@@ -31,11 +32,7 @@ class FlutterLayout extends StatelessWidget {
               ),
             ],
           )),
-          Icon(
-            Icons.star,
-            color: Colors.red[500],
-          ),
-          Text("41"),
+          Favorite()
         ],
       ),
     );
@@ -67,7 +64,7 @@ class FlutterLayout extends StatelessWidget {
         children: <Widget>[
           buildButton(Icons.call, "CALL"),
           buildButton(Icons.near_me, "ROUTE"),
-          buildButton(Icons.share, "SHARE")
+          ShareWidget()
         ],
       ),
     );
@@ -104,6 +101,123 @@ class FlutterLayout extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+//自定义分享Widget并可交互
+class ShareWidget extends StatefulWidget {
+  @override
+  _ShareWidgetState createState() => _ShareWidgetState();
+}
+
+class _ShareWidgetState extends State<ShareWidget> {
+  bool _isClick = true;
+  String textContent = "No Click";
+
+  void _setIconTextChange() {
+    Fluttertoast.showToast(
+        msg: "This is Center short Toast",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 3,
+        backgroundColor: Colors.red,
+        textColor: Colors.black87);
+   /* setState(() {
+
+      *//*if (_isClick) {
+        _isClick = false;
+        textContent = "Clicked";
+      } else {
+        _isClick = true;
+        textContent = "No Click";
+      }*//*
+    });*/
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    //封装一个图标的公共方法
+    Column buildButton(IconData icons, String label) {
+      Color color = Theme.of(context).primaryColor;
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          IconButton(
+              icon: Icon(icons),
+              color: Colors.red,
+              onPressed: _setIconTextChange),
+          Container(
+            margin: const EdgeInsets.only(top: 8),
+            child: Text(
+              textContent,
+              style: TextStyle(
+                  fontSize: 12, fontWeight: FontWeight.w400, color: color),
+            ),
+          )
+        ],
+      );
+    }
+
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[buildButton(Icons.share, "SHARE")],
+      ),
+    );
+  }
+}
+
+//自定义有状态的widget需要两个类，一个是继承StatefulWidget类 ，一个是state类，用于改变状态
+//自定义一个有状态的widget
+class Favorite extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _FavoriteState();
+  }
+}
+
+//收藏的自定义状态控件类
+class _FavoriteState extends State<Favorite> {
+  bool _isFavorite = true;
+  int _favoriteCount = 41;
+
+  //这里进行判断是否已经点击iconbutton
+  void _toggleFavroite() {
+    //使用setState方法进行通知UI框架，我这里 需要重新绘制uI
+    setState(() {
+      if (_isFavorite) {
+        _favoriteCount -= 1;
+        _isFavorite = false;
+      } else {
+        _favoriteCount += 1;
+        _isFavorite = true;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.all(0.0),
+          child: IconButton(
+              icon: (_isFavorite ? Icon(Icons.star) : Icon(Icons.star_border)),
+              color: Colors.red,
+              onPressed: _toggleFavroite),
+        ),
+        SizedBox(
+          width: 18.0,
+          child: Container(
+            child: Text("$_favoriteCount"),
+          ),
+        )
+      ],
     );
   }
 }

@@ -28,7 +28,7 @@ class IsVariableWidget extends StatefulWidget {
 class IsVariableWidgetWords extends State<IsVariableWidget> {
   final englishWordLists = <WordPair>[];
   final englishWordTextSize =
-  const TextStyle(fontSize: 18, color: Colors.redAccent);
+      const TextStyle(fontSize: 18, color: Colors.redAccent);
   final englishWordFavorite = Set<WordPair>();
 
   @override
@@ -57,7 +57,7 @@ class IsVariableWidgetWords extends State<IsVariableWidget> {
         );
       });
       final divied =
-      ListTile.divideTiles(tiles: title, context: context).toList();
+          ListTile.divideTiles(tiles: title, context: context).toList();
       return Scaffold(
         appBar: AppBar(
           title: Text(
