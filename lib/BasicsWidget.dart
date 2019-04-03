@@ -40,8 +40,8 @@ class MyAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 56,
-      alignment: Alignment.center,
+      height: 70,
+      alignment: Alignment.bottomCenter,
       padding: EdgeInsets.symmetric(horizontal: 8.0),
       decoration: BoxDecoration(
         color: Colors.redAccent,
