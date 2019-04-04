@@ -19,7 +19,7 @@ class SecondPage extends StatelessWidget {
           RaisedButton(
             child: Text('go  back'),
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.of(context).pop({"huangjian"});
             },
           ),
         ],
