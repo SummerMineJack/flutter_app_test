@@ -73,7 +73,7 @@ class _ShowToastWidgetState extends State<ShowToastWidget> {
               new Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: new RaisedButton(
-                    child: new Text('Show Long Toast'),
+                    child: new Text(StringContents.welcome),
                     onPressed: showLongToast),
               ),
               new Padding(
@@ -112,4 +112,8 @@ class _ShowToastWidgetState extends State<ShowToastWidget> {
       ),
     );
   }
+}
+
+class StringContents {
+  static String welcome = "Welcome Flutter App !";
 }

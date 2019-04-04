@@ -32,11 +32,11 @@ class _ResultsState extends State<Results> {
   var normalValues = "Go to Second";
 
   void goToSceondActivity() {
-    setState(() {
-      Future future = Navigator.of(context).pushNamed("Second");
-      //相当于Android的 onActivityResult方法
-      future.then((values) {
-        print(values);
+    Future future = Navigator.of(context).pushNamed("Second");
+    //相当于Android的 onActivityResult方法
+    future.then((values) {
+      setState(() {
+        normalValues = values;
       });
     });
   }

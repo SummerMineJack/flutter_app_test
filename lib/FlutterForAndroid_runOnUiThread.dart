@@ -33,6 +33,8 @@ class GetNetWorkListViewData extends StatefulWidget {
 
 class _GetNetWorkListViewDataState extends State<GetNetWorkListViewData> {
   List widgets = [];
+  final englishWordTextSize =
+      const TextStyle(fontSize: 18, color: Colors.redAccent);
 
   //初始化数据
   @override
@@ -44,21 +46,25 @@ class _GetNetWorkListViewDataState extends State<GetNetWorkListViewData> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Sample App"),
-        ),
-        body: new ListView.builder(
+    return Scaffold(
+        body: ListView.builder(
+            padding: EdgeInsets.all(15),
             itemCount: widgets.length,
-            itemBuilder: (BuildContext context, int position) {
-              return getRow(position);
+            itemBuilder: (context, i) {
+              if (i.isOdd) {
+                return Divider();
+              }
+              return getRow(i);
             }));
   }
 
   Widget getRow(int i) {
-    return new Padding(
-        padding: new EdgeInsets.all(10.0),
-        child: new Text("Row ${widgets[i]["title"]}"));
+    return ListTile(
+      title: Text(
+        "${widgets[i]["title"]}",
+        style: TextStyle(fontSize: 16, color: Colors.deepOrange),
+      ),
+    );
   }
 
   void getloadDataForNetWork() async {
