@@ -3,20 +3,18 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-void main() {
-  runApp(FlutterForAndroidAsycle());
-}
-
 //使用Flutter进行异步UI操作 使用网络数据进行显示listview数据
 class FlutterForAndroidAsycle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "获取网络数据并显示listview",
       theme: ThemeData(primaryColor: Colors.amberAccent),
       home: Scaffold(
         appBar: AppBar(
           title: Text("获取网络数据并显示listview"),
+          centerTitle: true,
         ),
         body: GetNetWorkListViewData(),
       ),

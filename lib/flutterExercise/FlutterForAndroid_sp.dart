@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(FlutterForAndroidSp());
-}
-
 class FlutterForAndroidSp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Flutter中SP的使用",
       theme: ThemeData(
           primaryColor: Colors.lightGreen,
@@ -16,6 +13,7 @@ class FlutterForAndroidSp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text("Flutter中SP的使用"),
+          centerTitle: true,
         ),
         body: Center(
           child: FlutterForAndroidSPValues(),

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(FlutterAnimations());
-}
 
 //使用Flutter Animation动画制作
 class FlutterAnimations extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
         title: "Flutter Animations Title",
         theme: ThemeData(primaryColor: Colors.amberAccent),
         home: FlutterAnimationsa(
@@ -43,6 +41,7 @@ class _FlutterAnimationsaState extends State<FlutterAnimationsa>
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(widget.title),
+        centerTitle: true,
       ),
       body: new Center(
           child: new Container(

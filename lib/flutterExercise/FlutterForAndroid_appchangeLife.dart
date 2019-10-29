@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(FlutterForAndroidLfeChange());
-}
-
 //使用Flutter 进行监听activity的生命周期
 /**
  * resumed - 应用程序可见并响应用户输入。这是来自Android的onResume
@@ -45,8 +41,10 @@ class _FlutterForAndroidLfeChangeState extends State<FlutterForAndroidLfeChange>
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: Text("Flutter监听Activity生命周期"),
         ),
         body: getbody(),

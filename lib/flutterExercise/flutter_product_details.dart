@@ -3,19 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatefulWidget {
+class ProductDetails extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return MyAppState();
+    return ProductDetailsState();
   }
 }
 
-class MyAppState extends State<MyApp> {
+class ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -117,11 +113,7 @@ class MyAppState extends State<MyApp> {
             ),
           ),
           /*3*/
-          Icon(
-            Icons.star,
-            color: Colors.red[500],
-          ),
-          Text('41'),
+          FavoriteWidget(),
         ],
       ),
     );
@@ -139,38 +131,85 @@ class MyAppState extends State<MyApp> {
   ///构建页面
   Widget _homeWidgets() {
     return Scaffold(
-      appBar: CustomAppBar(
-        leftIcon: Icon(Icons.menu),
-        title: Text("练习Flutter构建布局"),
-        rightIcon: Icon(Icons.more_vert),
-        isTitleCenter: true,
+      appBar: AppBar(
+        leading: GestureDetector(
+          child: Icon(
+            Icons.menu,
+            color: Colors.white,
+          ),
+          onTap: () {
+            Fluttertoast.showToast(msg: "菜单按钮", toastLength: Toast.LENGTH_LONG);
+          },
+        ),
+        centerTitle: true,
+        title: Text("Flutter练习构建布局"),
+        actions: <Widget>[
+          GestureDetector(
+            child: Container(
+              child: Icon(
+                Icons.more_vert,
+                color: Colors.white,
+              ),
+              padding: EdgeInsets.only(right: 8),
+            ),
+            onTap: () {
+              Fluttertoast.showToast(msg: "更多按钮", toastLength: Toast.LENGTH_LONG);
+            },
+          )
+        ],
       ),
       body: _bodyContent(),
     );
   }
 }
 
-///自定义AppBar
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  Widget leftIcon;
-  Widget title;
-  Widget rightIcon;
-  bool isTitleCenter;
+class FavoriteWidget extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _FavoriteWidgetState();
+  }
+}
 
-  CustomAppBar({Key key, @required this.leftIcon, @required this.title, @required this.rightIcon, @required this.isTitleCenter});
+class _FavoriteWidgetState extends State<FavoriteWidget> {
+  bool _isFavorited = true;
+  int _favoriteCount = 41;
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return AppBar(
-      leading: leftIcon,
-      title: title,
-      actions: <Widget>[rightIcon],
-      centerTitle: isTitleCenter,
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.all(0),
+          child: GestureDetector(
+            child: Icon(
+              _isFavorited ? Icons.star : Icons.star_border,
+              color: Colors.red[500],
+            ),
+            onTap: _toggleFavorite,
+          ),
+        ),
+        SizedBox(
+          width: 20,
+          child: Container(
+            child: Text('$_favoriteCount'),
+          ),
+        ),
+      ],
     );
   }
 
-  @override
-  // TODO: implement preferredSize
-  Size get preferredSize => Size.fromHeight(56);
+  void _toggleFavorite() {
+    setState(() {
+      if (_isFavorited) {
+        _favoriteCount -= 1;
+        _isFavorited = false;
+      } else {
+        _favoriteCount += 1;
+        _isFavorited = true;
+      }
+    });
+  }
 }

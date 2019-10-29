@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 
-//在Flutter中使用hint
-void main() {
-  runApp(FlutterForAndroidInputField());
-}
 
 class FlutterForAndroidInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "在Flutter中使用hint",
       theme: ThemeData(primaryColor: Colors.amberAccent),
       home: Scaffold(
         appBar: AppBar(
           title: Text("在Flutter中使用hint"),
+          centerTitle: true,
         ),
         body:InputFieldFlutter(),
       ),

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
-
-class MyApp extends StatelessWidget {
+class FlutterRouteGetData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
@@ -32,6 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("演示跳转"),
+        centerTitle: true,
       ),
       body: new Center(
         child: new Column(
@@ -44,8 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: new Text("直接使用name跳转")),
             new FlatButton(
                 onPressed: () {
-                  Navigator.push<String>(context,
-                      new MaterialPageRoute(builder: (BuildContext context) {
+                  Navigator.push<String>(context, new MaterialPageRoute(builder: (BuildContext context) {
                     return new ThirdPage(title: "请输入昵称");
                   })).then((String result) {
                     showDialog(

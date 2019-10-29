@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(FlutterForAndroidLayouts());
-}
 
 class FlutterForAndroidLayouts extends StatefulWidget {
   @override
@@ -14,11 +11,13 @@ class _FlutterForAndroidLayoutsState extends State<FlutterForAndroidLayouts> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Flutter中的布局",
       theme: ThemeData(primaryColor: Colors.deepOrange),
       home: Scaffold(
         appBar: AppBar(
           title: Text("Flutter中的布局"),
+          centerTitle: true,
         ),
         body: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

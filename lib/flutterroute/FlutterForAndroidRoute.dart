@@ -4,14 +4,11 @@ import 'FlutterForAndroidRouteOne.dart';
 import 'FlutterForAndroidRouteThree.dart';
 import 'FlutterForAndroidRouteTwo.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
+class FlutterRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Navigation',
       home: FirstScreen(),
       routes: <String, WidgetBuilder>{
@@ -55,6 +52,7 @@ class FirstScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('First Screen'),
+        centerTitle: true,
       ),
       body: Row(
         children: <Widget>[Results()],

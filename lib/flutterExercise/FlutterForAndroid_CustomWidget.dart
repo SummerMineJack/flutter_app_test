@@ -2,18 +2,17 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-void main() {
-  runApp(FlutterForAndroidCustomWidget());
-}
 
 class FlutterForAndroidCustomWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "自定义Widget",
       home: Scaffold(
         appBar: AppBar(
           title: Text("自定义Widget"),
+          centerTitle: true,
         ),
         body: Center(
           child: CustomWidget("自定义Widget"),

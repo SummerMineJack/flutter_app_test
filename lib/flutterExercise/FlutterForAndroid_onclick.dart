@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-void main() {
-  runApp(FlutterForAndroidClick());
-}
 
 class FlutterForAndroidClick extends StatelessWidget {
   void unableClick() {
@@ -17,11 +14,13 @@ class FlutterForAndroidClick extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Wdiget点击事件',
       theme: ThemeData(primaryColor: Colors.red),
       home: Scaffold(
         appBar: AppBar(
           title: Text("Wdiget点击事件"),
+          centerTitle: true,
         ),
         body: Center(
           child: Column(

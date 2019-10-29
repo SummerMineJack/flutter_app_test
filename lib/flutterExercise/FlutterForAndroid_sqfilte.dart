@@ -3,9 +3,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-void main() {
-  runApp(FlutterForAndroidSqFilte());
-}
 
 class FlutterForAndroidSqFilte extends StatefulWidget {
   @override
@@ -95,12 +92,14 @@ class _FlutterForAndroidSqFilteState extends State<FlutterForAndroidSqFilte> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Flutter中使用sqfilte",
       theme: ThemeData(
           primaryColor: Colors.deepOrange, textSelectionColor: Colors.amber),
       home: Scaffold(
         appBar: AppBar(
           title: Text("Flutter中使用sqfilte"),
+          centerTitle: true,
         ),
         body: Center(
             child: Column(

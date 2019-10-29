@@ -1,5 +1,26 @@
-import 'package:english_words/english_words.dart';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/flutterExercise/FlutterShowToast.dart';
+import 'package:flutter_app_test/flutterExercise/ListNavigtion.dart';
+import 'package:flutter_app_test/flutterExercise/RowColumnTest.dart';
+import 'package:flutter_app_test/flutterExercise/UseMaterialDesign.dart';
+
+import 'flutterExercise/ContentLayout.dart';
+import 'flutterExercise/FlutterForAndroid_AnimationController.dart';
+import 'flutterExercise/FlutterForAndroid_AsyncTask.dart';
+import 'flutterExercise/FlutterForAndroid_CustomWidget.dart';
+import 'flutterExercise/FlutterForAndroid_InputEditText.dart';
+import 'flutterExercise/FlutterForAndroid_Layouts.dart';
+import 'flutterExercise/FlutterForAndroid_appchangeLife.dart';
+import 'flutterExercise/FlutterForAndroid_onclick.dart';
+import 'flutterExercise/FlutterForAndroid_runOnUiThread.dart';
+import 'flutterExercise/FlutterForAndroid_sp.dart';
+import 'flutterExercise/FlutterForAndroid_sqfilte.dart';
+import 'flutterExercise/WidgetState.dart';
+import 'flutterExercise/flutter_product_details.dart';
+import 'flutterroute/FlutterForAndroidGetIntentData.dart';
+import 'flutterroute/FlutterForAndroidRoute.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,90 +47,123 @@ class IsVariableWidget extends StatefulWidget {
 
 //创建一个listview 组件
 class IsVariableWidgetWords extends State<IsVariableWidget> {
-  final englishWordLists = <WordPair>[];
-  final englishWordTextSize =
-      const TextStyle(fontSize: 18, color: Colors.redAccent);
-  final englishWordFavorite = Set<WordPair>();
+  List<String> _widgetNames = List<String>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _widgetNames.add("Row和Column练习");
+    _widgetNames.add("MaterialDesign");
+    _widgetNames.add("WidgetStatesClass");
+    _widgetNames.add("ListView传参");
+    _widgetNames.add("FlutterToast例子");
+    _widgetNames.add("FlutterForAndroidSqFilte");
+    _widgetNames.add("FlutterForAndroidSp");
+    _widgetNames.add("FlutterForAndroidAsycle");
+    _widgetNames.add("FlutterForAndroidClick");
+    _widgetNames.add("FlutterForAndroidLayouts");
+    _widgetNames.add("FlutterForAndroidInputField");
+    _widgetNames.add("FlutterForAndroidCustomWidget");
+    _widgetNames.add("FlutterForAndroidAsyncTask");
+    _widgetNames.add("FlutterForAndroidLfeChange");
+    _widgetNames.add("FlutterAnimations");
+    _widgetNames.add("ProductDetails");
+    _widgetNames.add("ContentApp");
+    _widgetNames.add("FlutterRoute");
+    _widgetNames.add("FlutterRouteGetData");
+  }
+
+  Color randomColor() {
+    return Color.fromARGB(255, Random().nextInt(256) + 0, Random().nextInt(256) + 0, Random().nextInt(256) + 0);
+  }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text('创建一个ListView'),
+        title: Text('Flutter练习集锦'),
         centerTitle: true,
-        actions: <Widget>[
-          IconButton(icon: Icon(Icons.list), onPressed: openFavoriteEnglisdPage)
-        ],
       ),
-      body: buildListView(),
-    );
-  }
-
-  void openFavoriteEnglisdPage() {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      final title = englishWordFavorite.map((pair) {
-        return ListTile(
-          title: Text(
-            pair.asPascalCase,
-            style: englishWordTextSize,
-          ),
-        );
-      });
-      final divied =
-          ListTile.divideTiles(tiles: title, context: context).toList();
-      return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "我是新打开的页面并显示了收藏的英文单词",
-            style: const TextStyle(fontSize: 16),
-          ),
+      body: Container(
+        child: ListView.builder(
+          itemCount: _widgetNames.length,
+          itemBuilder: (context, index) {
+            return Ink(
+              color: randomColor(),
+              child: ListTile(
+                title: Text(
+                  _widgetNames[index],
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  switch (index) {
+                    case 0:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => RowColumnTest()));
+                      break;
+                    case 1:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => UserMaterialDesign()));
+                      break;
+                    case 2:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => WidgetStatesClass()));
+                      break;
+                    case 3:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ListMyApp()));
+                      break;
+                    case 4:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ShowToast()));
+                      break; //FlutterLayout
+                    case 5:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FlutterForAndroidSqFilte()));
+                      break;
+                    case 6:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FlutterForAndroidSp()));
+                      break;
+                    case 7:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FlutterForAndroidAsycle()));
+                      break;
+                    case 8:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FlutterForAndroidClick()));
+                      break;
+                    case 9:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FlutterForAndroidLayouts()));
+                      break;
+                    case 10:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FlutterForAndroidInputField()));
+                      break;
+                    case 11:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FlutterForAndroidCustomWidget()));
+                      break;
+                    case 12:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FlutterForAndroidAsyncTask()));
+                      break;
+                    case 13:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FlutterForAndroidLfeChange()));
+                      break;
+                    case 14:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FlutterAnimations()));
+                      break;
+                    case 15:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails()));
+                      break;
+                    case 16:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ContentApp()));
+                      break;
+                    case 17:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FlutterRoute()));
+                      break;
+                    case 18:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FlutterRouteGetData()));
+                      break;
+                  }
+                },
+              ),
+            );
+          },
         ),
-        body: ListView(children: divied),
-      );
-    }));
-  }
-
-  //创建listview
-  Widget buildListView() {
-    return ListView.builder(
-        padding: const EdgeInsets.all(15.0),
-        itemBuilder: (context, i) {
-          if (i.isOdd) {
-            return Divider();
-          }
-          final index = i ~/ 2;
-          if (index >= englishWordLists.length) {
-            englishWordLists.addAll(generateWordPairs().take(10));
-          }
-          return buildListViewItem(englishWordLists[index]);
-        });
-  }
-
-  //创建listview item 样式文字
-  Widget buildListViewItem(WordPair pair) {
-    //进行判断点击的英文单词是否已经在englishWordFavorite中了
-    final isFavoriteWord = englishWordFavorite.contains(pair);
-    return ListTile(
-      title: Text(
-        pair.asPascalCase,
-        style: englishWordTextSize,
       ),
-      //为当前的item进行添加收藏图标
-      trailing: Icon(
-        isFavoriteWord ? Icons.favorite : Icons.favorite_border,
-        color: isFavoriteWord ? Colors.red : null,
-      ),
-      //onTap函数是可点击函数
-      onTap: () {
-        setState(() {
-          if (isFavoriteWord) {
-            englishWordFavorite.remove(pair);
-          } else {
-            englishWordFavorite.add(pair);
-          }
-        });
-      },
     );
   }
 }

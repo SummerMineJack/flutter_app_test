@@ -28,6 +28,7 @@ dependencies:
   http: ^0.12.0+2
   shared_preferences: ^0.5.1+2
   sqflite: ^1.1.0
+  flustars: ^0.2.6+1
 
 dev_dependencies:
   flutter_test:

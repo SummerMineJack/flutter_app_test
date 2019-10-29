@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-void main() {
-  runApp(ShowToast());
-}
 
 class ShowToast extends StatelessWidget {
   @override
@@ -63,9 +60,11 @@ class _ShowToastWidgetState extends State<ShowToastWidget> {
     }
 
     return new MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: new Scaffold(
         appBar: new AppBar(
           title: new Text('Flutter Toast'),
+          centerTitle: true,
         ),
         body: new Center(
           child: new Column(

@@ -4,15 +4,13 @@ import 'dart:isolate';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-void main() {
-  runApp(FlutterForAndroidAsyncTask());
-}
 
 //使用flutter的AsyncTask实现网络请求功能
 class FlutterForAndroidAsyncTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Flutter中的AsyncTask网络请求",
       theme: ThemeData(primaryColor: Colors.deepOrange),
       home: SampleApp(),
@@ -42,6 +40,7 @@ class _SampleAppState extends State<SampleApp> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Flutter 使用AsyncTask"),
+        centerTitle: true,
       ),
       body: getBody(),
     );

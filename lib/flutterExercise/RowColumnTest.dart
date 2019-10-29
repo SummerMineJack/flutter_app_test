@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(RowColumnTest());
-}
-
 class RowColumnTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -83,11 +79,13 @@ class RowColumnTest extends StatelessWidget {
     //一个页面，在Android java中，使用了ScrollView嵌套外层就可以做出同样的效果
     //flutter 就需要SingleChildScrollView
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "垂直水平练习",
       theme: ThemeData(primaryColor: Colors.amberAccent),
       home: Scaffold(
         appBar: AppBar(
           title: Text("垂直水平练习"),
+          centerTitle: true,
         ),
         body: Column(
           children: <Widget>[titileLayout, titileLayout],

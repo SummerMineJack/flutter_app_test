@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(WidgetStatesClass());
-}
-
 class WidgetStatesClass extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(primaryColor: Colors.redAccent),
       title: "Flutter box demo",
       home: Scaffold(
         appBar: AppBar(
           title: Text("Flutter box demo"),
+          centerTitle: true,
         ),
         body: Scaffold(
           body: Row(
