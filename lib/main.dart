@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/flutterExercise/FlutterShowToast.dart';
+import 'package:flutter_app_test/flutterExercise/FlutterSliverAppBar.dart';
 import 'package:flutter_app_test/flutterExercise/ListNavigtion.dart';
 import 'package:flutter_app_test/flutterExercise/RowColumnTest.dart';
 import 'package:flutter_app_test/flutterExercise/UseMaterialDesign.dart';
@@ -72,6 +73,7 @@ class IsVariableWidgetWords extends State<IsVariableWidget> {
     _widgetNames.add("ContentApp");
     _widgetNames.add("FlutterRoute");
     _widgetNames.add("FlutterRouteGetData");
+    _widgetNames.add("SliverAppBar");
   }
 
   Color randomColor() {
@@ -156,6 +158,9 @@ class IsVariableWidgetWords extends State<IsVariableWidget> {
                       break;
                     case 18:
                       Navigator.push(context, MaterialPageRoute(builder: (context) => FlutterRouteGetData()));
+                      break;
+                    case 19:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SliverAppBarCustom()));
                       break;
                   }
                 },
