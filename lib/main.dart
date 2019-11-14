@@ -6,6 +6,8 @@ import 'package:flutter_app_test/flutterExercise/FlutterSliverAppBar.dart';
 import 'package:flutter_app_test/flutterExercise/ListNavigtion.dart';
 import 'package:flutter_app_test/flutterExercise/RowColumnTest.dart';
 import 'package:flutter_app_test/flutterExercise/UseMaterialDesign.dart';
+import 'package:flutter_app_test/flutterExercise/flutter_tabbarview.dart';
+import 'package:flutter_app_test/flutterExercise/platform_channel.dart';
 
 import 'flutterExercise/ContentLayout.dart';
 import 'flutterExercise/FlutterForAndroid_AnimationController.dart';
@@ -74,6 +76,8 @@ class IsVariableWidgetWords extends State<IsVariableWidget> {
     _widgetNames.add("FlutterRoute");
     _widgetNames.add("FlutterRouteGetData");
     _widgetNames.add("SliverAppBar");
+    _widgetNames.add("TabBarView");
+    _widgetNames.add("batterylevel");
   }
 
   Color randomColor() {
@@ -161,6 +165,12 @@ class IsVariableWidgetWords extends State<IsVariableWidget> {
                       break;
                     case 19:
                       Navigator.push(context, MaterialPageRoute(builder: (context) => SliverAppBarCustom()));
+                      break;
+                    case 20:
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => MyTabBarView()));
+                      break;
+                    case 21:
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>PlatFormBatteryLevel()));
                       break;
                   }
                 },
