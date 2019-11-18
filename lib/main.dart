@@ -56,6 +56,14 @@ class IsVariableWidgetWords extends State<IsVariableWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    initData();
+  }
+
+  Color randomColor() {
+    return Color.fromARGB(255, Random().nextInt(256) + 0, Random().nextInt(256) + 0, Random().nextInt(256) + 0);
+  }
+
+  void initData(){
     _widgetNames.add("Row和Column练习");
     _widgetNames.add("MaterialDesign");
     _widgetNames.add("WidgetStatesClass");
@@ -80,9 +88,7 @@ class IsVariableWidgetWords extends State<IsVariableWidget> {
     _widgetNames.add("batterylevel");
   }
 
-  Color randomColor() {
-    return Color.fromARGB(255, Random().nextInt(256) + 0, Random().nextInt(256) + 0, Random().nextInt(256) + 0);
-  }
+
 
   @override
   Widget build(BuildContext context) {
